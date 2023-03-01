@@ -1,63 +1,56 @@
-var nameInputEl = document.querySelector('#cityName');
-var El = document.querySelector('#repos-container');
-var repoSearchTerm = document.querySelector('#repo-search-term');
+var nameInputEl = document.querySelector('#citySearch');
+var currentIconEl = document.querySelector('#currentIcon');
+var citySearchEl = document.querySelector('#citySearch');
+var cityListEl = document.querySelector('#cityList');
+var currentCityEl = document.querySelector('#currentCity');
+var currentTempEl = document.querySelector('#currentTemp');
+var currentWinEl = document.querySelector('#currentWin');
+var currentHumEl = document.querySelector('#currentHum');
+var searchSubmitEl = document.querySelector('#searchSubmit');
+var currentDateEl = document.querySelector('#currentDate');
+var currentInfoEl = document.querySelector('#currentInfo');
+var temp = document.querySelector("#temp");
+var wind = document.querySelector("#wind");
+var humid = document.querySelector("#humid");
+var search = JSON.parse(localStorage.getItem("searchSubmit") || "[]");
 
 var formSubmitHandler = function (event) {
   event.preventDefault();
 
-  var username = nameInputEl.value.trim();
+  var cityName = nameInputEl.value.trim();
 
-  if (username) {
-    getUserRepos(username);
+  if (cityName) {
+    getCityTemp(cityName);
 
-    repoContainerEl.textContent = '';
+    citySearchEl.textContent = '';
     nameInputEl.value = '';
   } else {
-    alert('Please enter a GitHub username');
+    alert('Please enter a city name');
   }
 };
 
-var buttonClickHandler = function (event) {
-  var language = event.target.getAttribute('data-language');
-
-  if (language) {
-    getFeaturedRepos(language);
-
-    repoContainerEl.textContent = '';
-  }
-};
-
-var getUserRepos = function (user) {
-  var apiUrl = 'https://api.github.com/users/' + user + '/repos';
+var getCityTemp = function (cityName) {
+  var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}' + cityName + '&limit=1&appid=' + key;
 
   fetch(apiUrl)
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          displayRepos(data, user);
-        });
-      } else {
-        alert('Error: ' + response.statusText);
-      }
-    })
+          displayTemp(data, cityName);
+        })
+      } 
+    .then(function(data) {
+        var lat = (data[0].lat)
+        var lon = (data[0].lon)
+        displayWeather(lat, lon);
+      })
+
     .catch(function (error) {
-      alert('Unable to connect to GitHub');
-    });
-};
+      alert('Unable to find city provided');
+      return;
+    })
+}};
 
-var getFeaturedRepos = function (language) {
-  var apiUrl = 'https://api.github.com/search/repositories?q=' + language + '+is:featured&sort=help-wanted-issues';
-
-  fetch(apiUrl).then(function (response) {
-    if (response.ok) {
-      response.json().then(function (data) {
-        displayRepos(data.items, language);
-      });
-    } else {
-      alert('Error: ' + response.statusText);
-    }
-  });
-};
 
 var displayRepos = function (repos, searchTerm) {
   if (repos.length === 0) {
@@ -94,5 +87,5 @@ var displayRepos = function (repos, searchTerm) {
   }
 };
 
-userFormEl.addEventListener('submit', formSubmitHandler);
+searchSubmitEl.addEventListener('submit', formSubmitHandler);
 
