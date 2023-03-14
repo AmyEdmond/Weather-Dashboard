@@ -16,79 +16,87 @@
             <h1>Weather Dashboard</h1>    
     </header>
 
-    <main>
-         <div class="row">
+    <main class="d-flex flex-row">
+         
           <div class="col-12 col-md-4 col-lg-3">
             <h4>Search for a City:</h4>
             <div class="d-grid gap-2 col-5">
+              <div id="cityError" class="error-msg"></div>
               <input type= "text" name="cityName" class="form-input" id="citySearch" placeholder="City Name" />
-              <button class="btn btn-primary btn-sm searchSubmit" type="button" id="searchSubmit">Search</button>
+              <button class="btn btn-primary btn-sm searchSubmit" type="button" id="searchSubmit">Search</button>              
             </div>
            <div class="cityList">
               <ul class="list-group" id="cityList"></ul>
             </div>
           </div>  
-         
-          <div class="col-12 col-md-8 col-lg-9">
+         <div> 
+          <div class="p-3 mb-2">
               <div class="card">
-              <h2 class="currentWeather">Current Weather <span id="currentCity"></span>(<span id="currentDate" ></span>)<img src="" alt="Weather icon" id="currentIcon"></h2>
-              <p class="currentInfo">Temperature: <span id="currentTemp"></span>&#8451</p>
-              <p class="currentInfo">Wind speed: <span id="currentWin"></span>KMH</p>
-              <p class="currentInfo">Humidity: <span id="currentHum"></span>%</p>
+              <h3 class="currentWeather">Current Weather</h3>
+              <div class ="currentData col-4"><span id="currentCity"></span><span id="currentDate" ></span><img src="" id="currentIcon" class="col-4"></div>
+              <p class="currentInfo"><span id="currentTemp"></span></p>
+              <p class="currentInfo"> <span id="currentWin"></span></p>
+              <p class="currentInfo"><span id="currentHum"></span></p>
               </div>
+              <div class="col-4" id="spacer"></div>
             </div> 
           
-          <div class="Forecast">  
-            <h4> 5 Day Forecast:</h4>
+          <div class="Forecast" class="p-3">  
+            <h3 class="d-block"> 5 Day Forecast:</h3>
             <div class= "container">
-              <div class="row justify-content-around text-light">
+              <div class="row justify-content-around d-block d-xl-flex mr-0 text-light">
                 <div class="col">
                   <div class="card bg-primary">
-                    <h5 class="futureWeather">(<span id="day-0"></span>)</h5>
-                    <p class="weatherText">Temperature: <span id="Temp-0"></span>&#8451</p>
-                    <p class="weatherText">Wind speed: <span id="Wind-0"></span>KMH</p>
-                    <p class="weatherText">Humidity: <span id="Hum-0"></span>%</p>
+                    <h5 class="futureWeather"><span id="day-0"></span></h5>
+                    <img src="" alt="" id="icon-0">
+                    <p class="weatherText"><span id="Temp-0"></span></p>
+                    <p class="weatherText"><span id="Wind-0"></span></p>
+                    <p class="weatherText"><span id="Hum-0"></span></p>
                   </div>
                 </div>
                   
                 <div class="col">
                   <div class="card bg-primary">
-                    <h5 class="futureWeather">(<span id="day-1"></span>)</h5>
-                    <p class="weatherText">Temperature: <span id="Temp-1"></span>&#8451</p>
-                    <p class="weatherText">Wind speed: <span id="Win-1"></span>KMH</p>
-                    <p class="weatherText">Humidity: <span id="Hum-1"></span>%</p>
+                    <h5 class="futureWeather"><span id="day-1"></span></h5>
+                    <img src="" alt="" id="icon-1">
+                    <p class="weatherText"><span id="Temp-1"></span></p>
+                    <p class="weatherText"><span id="Wind-1"></span></p>
+                    <p class="weatherText"><span id="Hum-1"></span></p>
                   </div> 
                 </div>
                 <div class="col">
                   <div class="card bg-primary">
-                    <h5 class="futureWeather">(<span id="day-2"></span>)</h5>
-                    <p class="weatherText">Temperature: <span id="Temp-2"></span>&#8451</p>
-                    <p class="weatherText">Wind speed: <span id="Win-2"></span>KMH</p>
-                    <p class="weatherText">Humidity: <span id="Hum-2"></span>%</p>
+                    <h5 class="futureWeather"><span id="day-2"></span></h5>
+                    <img src="" alt="" id="icon-2">
+                    <p class="weatherText"><span id="Temp-2"></span></p>
+                    <p class="weatherText"><span id="Wind-2"></span></p>
+                    <p class="weatherText"><span id="Hum-2"></span></p>
                   </div>
                 </div>
                 <div class="col">
                   <div class="card bg-primary">
-                    <h5 class="futureWeather">(<span id="day-3"></span>)</h5>
-                    <p class="weatherText">Temperature: <span id="Temp-3"></span>&#8451</p>
-                    <p class="weatherText">Wind speed: <span id="Win-3"></span>KMH</p>
-                    <p class="weatherText">Humidity: <span id="Hum-3"></span>%</p>
+                    <h5 class="futureWeather"><span id="day-3"></span></h5>
+                    <img src="" alt="" id="icon-3">
+                    <p class="weatherText"><span id="Temp-3"></span></p>
+                    <p class="weatherText"><span id="Wind-3"></span></p>
+                    <p class="weatherText"><span id="Hum-3"></span></p>
                   </div>
                 </div> 
                 <div class="col">
                   <div class="card bg-primary">
-                    <h5 class="futureWeather">(<span id="day-4"></span>)</h5>
-                    <p class="weatherText">Temperature: <span id="Temp-4"></span>&#8451</p>
-                    <p class="weatherText">Wind speed: <span id="Win-4"></span>KMH</p>
-                    <p class="weatherText">Humidity: <span id="Hum-4"></span>%</p>
+                    <h5 class="futureWeather"><span id="day-4"></span></h5>
+                    <img src="" alt="" id="icon-4">
+                    <p class="weatherText"><span id="Temp-4"></span></p>
+                    <p class="weatherText"><span id="Wind-4"></span></p>
+                    <p class="weatherText"><span id="Hum-4"></span></p>
                   </div>
                 </div> 
               </div>
             </div>
             
-              
+          </div>    
             
-            </div>
+          </div>
           
         <!--        
               <div class="col-12 col-md-8">
@@ -97,9 +105,14 @@
               </div>
             -->
         </div>
-      </div>
+      
     </main>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous"
+    ></script>
     <script src="script.js"></script>
 </body>
 </html>
