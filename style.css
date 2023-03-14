@@ -6,9 +6,19 @@ body {
     font-family: 'IBM Plex Sans', sans-serif;
     color: var(--dark);
     line-height: 1.5;
-    font-size: 16px;
+    font-size: 1.2rem;
+  }
+  .btn {
+    font-family: sans-serif;
+    font-size: 1.2rem;
+
+  }
+
+  .error-msg {
+    color: red;
   }
   
+
   h1,
   h2,
   h3,

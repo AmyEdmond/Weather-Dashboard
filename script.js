@@ -4,6 +4,7 @@ var citySearchEl = document.querySelector("#citySearch");
 var errorMesEl = document.querySelector("#cityError");
 var cityListEl = document.querySelector("#cityList");
 var currentCityEl = document.querySelector("#currentCity");
+var currentWeatherEl = document.querySelector("#currentWeather");
 var currentTempEl = document.querySelector("#currentTemp");
 var currentWinEl = document.querySelector("#currentWin");
 var currentHumEl = document.querySelector("#currentHum");
@@ -16,6 +17,7 @@ var search = JSON.parse(localStorage.getItem("searchSubmit") || "[]");
 var formSubmitHandler = function (event) {
   event.preventDefault();
   //console.log(formSubmitHandler)
+  currentWeatherEl.setAttribute("class","hide")
   var cityName = citySearchEl.value.trim();
   citySearchEl.value = "";
   if (cityName) {
