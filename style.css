@@ -1,23 +1,49 @@
 
 body {
     background-color: var(--primary);
-    margin: 0;
-    padding: 0;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: sans-serif;
     color: var(--dark);
     line-height: 1.5;
     font-size: 1.2rem;
+    min-height: 100%;
+    
+    
   }
-  .btn {
+
+.btn {
     font-family: sans-serif;
     font-size: 1.2rem;
-
+    border: 2px solid black;
+    
   }
 
-  .error-msg {
+.error-msg {
     color: red;
   }
   
+.currentCity {
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+.currentDate {
+    font-weight: bold;
+  }
+
+.currentInfo {
+  font-weight: bold;
+}
+
+.weatherText {
+  font-weight: bold;
+}
+
+.card {
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 7px;
+    box-shadow: 5px 5px 3px grey;
+}
 
   h1,
   h2,
@@ -31,14 +57,45 @@ body {
     line-height: 1.25;
   }
   
+  .hide {
+    display: none;
+}
   main {
     margin: 20px auto;
     width: 94%;
   }
   
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    
+}
   p {
     font-size: 1.2rem;
+    display: block;
   }
   
- 
   
+ 
+@media (max-width: 700px) {
+    .card {
+        column-count: 1;
+    }
+}
+@media (min-width: 700px) {
+    .card {
+        column-count: 2;
+    }
+}
+@media (min-width: 1000px) {
+    .card {
+        column-count: 3;
+    }
+}
+@media (min-width: 1400px) {
+    .card {
+        column-count: 4;
+    }
+}
