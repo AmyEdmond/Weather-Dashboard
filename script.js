@@ -12,7 +12,7 @@ var searchSubmitEl = document.querySelector("#searchSubmit");
 var currentDateEl = document.querySelector("#currentDate");
 var currentInfoEl = document.querySelector("#currentInfo");
 var today = dayjs();
-var search = JSON.parse(localStorage.getItem("searchSubmit") || "[]");
+var search = JSON.parse(localStorage.getItem("city")) || [];
 
 var formSubmitHandler = function (event) {
   event.preventDefault();
@@ -21,7 +21,8 @@ var formSubmitHandler = function (event) {
   var cityName = citySearchEl.value.trim();
   citySearchEl.value = "";
   if (cityName) {
-    saveSearch(cityName);
+    search.push(cityName)
+    saveSearch(search);
     getCoordinates(cityName);
 
     errorMesEl.innerHTML = "";
@@ -32,13 +33,13 @@ var formSubmitHandler = function (event) {
 };
 
 var saveSearch = function (cityName) {
-  localStorage.setItem("City", JSON.stringify(cityName));
+  localStorage.setItem("city", JSON.stringify(cityName));
   loadSearch();
 };
 
 
 var loadSearch = function () {
-  var search = JSON.parse(window.localStorage.getItem("city")) || [];
+  var search = window.localStorage.getItem("city") || [];
       for (var i = 0; i < search.length; i++) {
       var li = document.createElement("li");
       li.textContent = search[i]
