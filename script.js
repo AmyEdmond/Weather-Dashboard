@@ -32,7 +32,7 @@ var formSubmitHandler = function (event) {
 };
 
 var saveSearch = function (cityName) {
-  localStorage.setItem("City", JSON.stringify(cityName));
+  localStorage.setItem("city", JSON.stringify(cityName));
   loadSearch();
 };
 
