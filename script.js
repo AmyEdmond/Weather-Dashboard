@@ -22,7 +22,7 @@ var formSubmitHandler = function (event) {
   citySearchEl.value = "";
   if (cityName) {
     search.push(cityName)
-    saveSearch(search);
+    saveSearch(cityName);
     getCoordinates(cityName);
 
     errorMesEl.innerHTML = "";
@@ -33,17 +33,17 @@ var formSubmitHandler = function (event) {
 };
 
 var saveSearch = function (cityName) {
-  localStorage.setItem("city", JSON.stringify(cityName));
-  loadSearch();
+   localStorage.setItem("city", JSON.stringify(cityName));
+    loadSearch();
+  
 };
 
 
-var loadSearch = function () {
-  var search = window.localStorage.getItem("city") || [];
-      for (var i = 0; i < search.length; i++) {
-      var li = document.createElement("li");
-      li.textContent = search[i]
-      cityListEl.appendChild(li);
+var loadSearch = function() {
+  for (var i = 0; i < citySearchEl.length; i++) {
+     var saveCity = document.createElement("button");
+      saveCity.textContent = citySearchEl[i]
+      cityListEl.appendChild(saveCity);
     }
   
 };
@@ -153,4 +153,4 @@ var forecastWeather = function (data) {
 
 
 searchSubmitEl.addEventListener("click", formSubmitHandler);
-cityListEl.addEventListener("click", savedSearchHandler)
+citySearchEl.addEventListener("click", savedSearchHandler)
