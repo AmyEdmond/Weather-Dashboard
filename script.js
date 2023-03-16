@@ -14,6 +14,7 @@ var currentInfoEl = document.querySelector("#currentInfo");
 var today = dayjs();
 var search = JSON.parse(localStorage.getItem("city")) || [];
 
+
 var formSubmitHandler = function (event) {
   event.preventDefault();
   //console.log(formSubmitHandler)
@@ -21,7 +22,6 @@ var formSubmitHandler = function (event) {
   var cityName = citySearchEl.value.trim();
   citySearchEl.value = "";
   if (cityName) {
-    search.push(cityName)
     saveSearch(cityName);
     getCoordinates(cityName);
 
@@ -33,26 +33,35 @@ var formSubmitHandler = function (event) {
 };
 
 var saveSearch = function (cityName) {
-   localStorage.setItem("city", JSON.stringify(cityName));
-    loadSearch();
-  
-};
-
-
-var loadSearch = function() {
-  for (var i = 0; i < citySearchEl.length; i++) {
-     var saveCity = document.createElement("button");
-      saveCity.textContent = citySearchEl[i]
-      cityListEl.appendChild(saveCity);
-    }
-  
-};
-
-var savedSearchHandler = function(event){
-  var city = event.target.getAttribute("cityName")
-  if(city){
-    getCoordinates(cityName);
+  console.log('array', search)
+  if(Array.isArray(search)){
+    localStorage.setItem('city', JSON.stringify(search))
   }
+  var history = JSON.parse(localStorage.getItem('city')) /// []
+   history.push(cityName)
+   localStorage.setItem("city", JSON.stringify(history));
+    loadSearch(cityName);
+  
+};
+
+
+var loadSearch = function(cityName) {
+  console.log(citySearchEl.length, citySearchEl[0])
+
+     var saveCity = document.createElement("button");
+     saveCity.className = "btn btn-info btn-sm"
+      saveCity.textContent = cityName
+      cityListEl.appendChild(saveCity);
+    
+  
+};
+
+
+var savedSearchHandler = function(event) {
+  var listCity = event.target.innerText
+  cityName = listCity
+  getCoordinates(cityName);
+  
 }
 
 var getCoordinates = function (cityName) {
@@ -153,4 +162,3 @@ var forecastWeather = function (data) {
 
 
 searchSubmitEl.addEventListener("click", formSubmitHandler);
-citySearchEl.addEventListener("click", savedSearchHandler)
