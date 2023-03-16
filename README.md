@@ -7,6 +7,7 @@ The goal for this challenge was to see the weather outlook for multiple cities s
 ## Links
 
 Deployed: https://amyedmond.github.io/Weather-Dashboard/
+
 Github: https://github.com/AmyEdmond/Weather-Dashboard
 
 ## Technology used
