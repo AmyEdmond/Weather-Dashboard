@@ -6,6 +6,14 @@ The goal for this challenge was to see the weather outlook for multiple cities s
 
 Link to weather dashboard: https://amyedmond.github.io/Weather-Dashboard/
 
+## Technology used
+
+* JavaScript 
+* HTML5 
+* CSS3 
+* Bootstrap 
+* 5 Day Weather Forecast API
+
 ## Installation
 
 N/A
