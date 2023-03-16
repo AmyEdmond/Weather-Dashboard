@@ -58,7 +58,7 @@ var loadSearch = function(cityName) {
 
 
 var savedSearchHandler = function(event) {
-  var listCity = event.target.innerText
+  var listCity = event.target.innerHTML
   cityName = listCity
   getCoordinates(cityName);
   
