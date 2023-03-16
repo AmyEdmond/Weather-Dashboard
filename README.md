@@ -18,3 +18,4 @@ In the next section, a 5 day forecast is displayed that shows the date, a weathe
 When I click on one of the cities listed in the search history, current and future weather conditions for that city are displayed.
 
 ## Images
+![image](https://user-images.githubusercontent.com/122325607/225497788-27dd3cd0-a69e-4615-8d52-7c24a83a9ac2.png)
