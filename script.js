@@ -46,9 +46,7 @@ var saveSearch = function (cityName) {
 
 
 var loadSearch = function(cityName) {
-  console.log(citySearchEl.length, citySearchEl[0])
-
-     var saveCity = document.createElement("button");
+      var saveCity = document.createElement("button");
      saveCity.className = "btn btn-info btn-sm"
       saveCity.textContent = cityName
       cityListEl.appendChild(saveCity);
@@ -59,7 +57,7 @@ var loadSearch = function(cityName) {
 
 var savedSearchHandler = function(event) {
   var listCity = event.target.innerHTML
-  cityName = listCity
+  listCity.textContent = cityName;
   getCoordinates(cityName);
   
 }
@@ -162,3 +160,4 @@ var forecastWeather = function (data) {
 
 
 searchSubmitEl.addEventListener("click", formSubmitHandler);
+cityListEl.addEventListener("click", savedSearchHandler);
