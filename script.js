@@ -14,11 +14,10 @@ var currentInfoEl = document.querySelector("#currentInfo");
 var today = dayjs();
 var search = JSON.parse(localStorage.getItem("city")) || [];
 
-
 var formSubmitHandler = function (event) {
   event.preventDefault();
   //console.log(formSubmitHandler)
-  
+
   var cityName = citySearchEl.value.trim();
   citySearchEl.value = "";
   if (cityName) {
@@ -33,34 +32,29 @@ var formSubmitHandler = function (event) {
 };
 
 var saveSearch = function (cityName) {
-  console.log('array', search)
-  if(Array.isArray(search)){
-    localStorage.setItem('city', JSON.stringify(search))
+  console.log("array", search);
+  if (Array.isArray(search)) {
+    localStorage.setItem("city", JSON.stringify(search));
   }
-  var history = JSON.parse(localStorage.getItem('city')) /// []
-   history.push(cityName)
-   localStorage.setItem("city", JSON.stringify(history));
-    loadSearch(cityName);
-  
+  var history = JSON.parse(localStorage.getItem("city")); /// []
+  history.push(cityName);
+  localStorage.setItem("city", JSON.stringify(history));
+  loadSearch(cityName);
 };
 
-
-var loadSearch = function(cityName) {
-      var saveCity = document.createElement("button");
-     saveCity.className = "btn btn-info btn-sm"
-      saveCity.textContent = cityName
-      cityListEl.appendChild(saveCity);
-    
-  
+var loadSearch = function (cityName) {
+  var saveCity = document.createElement("button");
+  saveCity.className = "btn btn-info btn-sm";
+  saveCity.textContent = cityName;
+  cityListEl.appendChild(saveCity);
 };
 
+var savedSearchHandler = function (event) {
+  var cityName = event.target.innerHTML;
+  console.log(cityName);
 
-var savedSearchHandler = function(event) {
-  var listCity = event.target.innerHTML
-  listCity.textContent = cityName;
   getCoordinates(cityName);
-  
-}
+};
 
 var getCoordinates = function (cityName) {
   var apiUrl =
@@ -157,7 +151,6 @@ var forecastWeather = function (data) {
     iconEl.src = iconLink;
   }
 };
-
 
 searchSubmitEl.addEventListener("click", formSubmitHandler);
 cityListEl.addEventListener("click", savedSearchHandler);
