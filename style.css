@@ -68,12 +68,8 @@ main {
 }
   
 footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    height: 50px;
-    
+    flex-shrink: 0;
+    text-align: center;   
 }
 
 p {
